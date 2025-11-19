@@ -5,7 +5,14 @@
       "Bash(npm install)",
       "Bash(npm run build:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh:*)",
+      "Bash(winget:*)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" --version)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" auth login)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo create ai-automation-landing-page --public --source=. --remote=origin --push)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

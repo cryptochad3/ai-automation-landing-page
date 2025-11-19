@@ -3,7 +3,8 @@ import { GoogleGenAI } from "@google/genai";
 // Initialize the Gemini client
 // Note: In a production environment, you would likely proxy this through a backend
 // to keep the API key secure. For this demo/portfolio structure, we use the env var.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const SYSTEM_INSTRUCTION = `
 You are "ECT Assistant", a demo AI agent for ECT's portfolio website.
@@ -24,7 +25,7 @@ If asked for pricing, mention it's flexible and to check the pricing section.
 `;
 
 export const sendMessageToGemini = async (history: { role: string, parts: { text: string }[] }[], message: string): Promise<string> => {
-  if (!process.env.API_KEY) {
+  if (!ai || !apiKey) {
     return "Demo Mode: API Key not configured. (In a real deployment, this would connect to the Gemini API).";
   }
 
