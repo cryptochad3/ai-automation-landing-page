@@ -12,7 +12,10 @@
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" --version)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" auth login)",
       "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" repo create ai-automation-landing-page --public --source=. --remote=origin --push)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(git push:*)",
+      "Bash(\"C:\\Program Files\\GitHub CLI\\gh.exe\" auth setup-git)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []
