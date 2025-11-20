@@ -1,77 +1,131 @@
 import React from 'react';
-import { Search, FileText, Bot, BarChart3, Users, ShieldCheck } from 'lucide-react';
-import { ServiceItem } from '../types';
+import { Bot, Globe, Cog, Eye, ArrowRight } from 'lucide-react';
 
-const services: ServiceItem[] = [
+const services = [
   {
-    id: 'internal-assistants',
-    title: 'Internal AI Assistants',
-    description: 'Secure, private AI assistants that understand your company’s documents. Your own ChatGPT trained on your data.',
-    icon: <ShieldCheck className="h-8 w-8 text-brand-500" />,
-    details: ['Chroma vector database', 'Custom RAG pipeline', 'Automatic document updates', 'Web or desktop interface'],
-    idealFor: ['Law firms', 'Medical offices', 'Engineering', 'Finance'],
+    id: 'ai-integration',
+    title: 'AI Integration',
+    icon: <Bot className="h-8 w-8" />,
+    iconColor: 'text-brand-500',
+    bgColor: 'bg-brand-500/10',
+    borderColor: 'border-brand-500/20',
+    hoverBorder: 'hover:border-brand-500',
+    details: [
+      'Chatbots that know your business',
+      'Document Q&A systems',
+      'AI-powered automation',
+      'RAG systems, LLM APIs'
+    ],
+    price: 'Starting at $400',
+    link: '#projects'
   },
   {
-    id: 'reporting',
-    title: 'Automated Reporting Pipelines',
-    description: 'Hands-free automated reporting that runs hourly, daily, or weekly. Custom-built automations scheduled to fit your needs.',
-    icon: <BarChart3 className="h-8 w-8 text-emerald-500" />,
-    details: ['Document → PDF → Summary', 'OCR → Structured output', 'Inventory & Sales reports', 'Cron job scheduling'],
+    id: 'web-scraping',
+    title: 'Web Scraping & Data',
+    icon: <Globe className="h-8 w-8" />,
+    iconColor: 'text-purple-500',
+    bgColor: 'bg-purple-500/10',
+    borderColor: 'border-purple-500/20',
+    hoverBorder: 'hover:border-purple-500',
+    details: [
+      'Complex site scrapers',
+      'Real-time monitoring',
+      'Data pipelines',
+      'API integrations'
+    ],
+    price: 'Starting at $300',
+    link: '#projects'
   },
   {
-    id: 'doc-search',
-    title: 'AI Document Search Engines',
-    description: 'Turn any folder of documents (PDFs, Emails, Contracts) into a searchable AI engine.',
-    icon: <Search className="h-8 w-8 text-indigo-500" />,
-    details: ['Index PDFs, Word, Logs', 'Advanced chunking strategies', 'Instant retrieval of key details', 'Retrieval-augmented generation'],
+    id: 'python-automation',
+    title: 'Python Automation',
+    icon: <Cog className="h-8 w-8" />,
+    iconColor: 'text-emerald-500',
+    bgColor: 'bg-emerald-500/10',
+    borderColor: 'border-emerald-500/20',
+    hoverBorder: 'hover:border-emerald-500',
+    details: [
+      'Workflow automation',
+      'File/data processing',
+      'Custom tools & scripts',
+      'System integrations'
+    ],
+    price: 'Starting at $200',
+    link: '#projects'
   },
   {
-    id: 'chatbots',
-    title: 'Custom Business Chatbots',
-    description: 'AI agents that can answer customer questions, sort emails, analyze uploads, and escalate when needed.',
-    icon: <Bot className="h-8 w-8 text-purple-500" />,
-    details: ['FastAPI backend', 'Local or cloud LLMs', 'Vector search integration', 'Secure deployments'],
-  },
-  {
-    id: 'consulting',
-    title: 'AI Automation Consulting',
-    description: 'Identify what can be automated. I help map data flows, build workflows, and select the right tools.',
-    icon: <Users className="h-8 w-8 text-orange-500" />,
-    details: ['Map data flows', 'Streamline processes', 'Reduce manual work', 'Select right models'],
+    id: 'computer-vision',
+    title: 'Computer Vision',
+    icon: <Eye className="h-8 w-8" />,
+    iconColor: 'text-orange-500',
+    bgColor: 'bg-orange-500/10',
+    borderColor: 'border-orange-500/20',
+    hoverBorder: 'hover:border-orange-500',
+    details: [
+      'Object detection',
+      'Video analysis',
+      'Real-time processing',
+      'Custom model training'
+    ],
+    price: 'Starting at $500',
+    link: '#projects'
   }
 ];
 
 export const Services: React.FC = () => {
   return (
-    <section id="services" className="py-24 bg-slate-900">
+    <section id="services" className="py-24 bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-brand-500 font-mono text-sm tracking-wider uppercase mb-2">What I Do</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-white">Custom AI Solutions</h3>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-            From intelligent search to automated pipelines, I build the systems that let you do more with your data.
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            What I Build
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Production-ready systems built with Python, AI, and 20+ years of experience
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Service Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
-            <div key={service.id} className="bg-slate-950 border border-slate-800 rounded-xl p-8 hover:border-brand-500/50 transition-all hover:-translate-y-1 hover:shadow-xl group">
-              <div className="bg-slate-900 w-16 h-16 rounded-lg flex items-center justify-center mb-6 group-hover:bg-slate-800 transition-colors">
+            <div
+              key={service.id}
+              className={`bg-slate-950/50 backdrop-blur-sm border ${service.borderColor} ${service.hoverBorder} rounded-xl p-6 transition-all hover:-translate-y-1 hover:shadow-2xl group`}
+            >
+              {/* Icon */}
+              <div className={`${service.bgColor} ${service.iconColor} w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 {service.icon}
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">{service.title}</h4>
-              <p className="text-slate-400 mb-6 text-sm leading-relaxed min-h-[80px]">
-                {service.description}
-              </p>
-              
-              <div className="space-y-2 mb-6">
-                {service.details.slice(0, 3).map((detail, i) => (
-                  <div key={i} className="flex items-center text-sm text-slate-500">
-                    <div className="w-1.5 h-1.5 rounded-full bg-slate-700 mr-2"></div>
+
+              {/* Title */}
+              <h3 className="text-xl font-bold text-white mb-4">
+                {service.title}
+              </h3>
+
+              {/* Details */}
+              <ul className="space-y-2 mb-6">
+                {service.details.map((detail, i) => (
+                  <li key={i} className="flex items-start text-sm text-slate-400">
+                    <span className="text-slate-600 mr-2">•</span>
                     {detail}
-                  </div>
+                  </li>
                 ))}
+              </ul>
+
+              {/* Price */}
+              <div className="text-brand-400 font-bold text-lg mb-4">
+                {service.price}
               </div>
+
+              {/* CTA */}
+              <a
+                href={service.link}
+                className="inline-flex items-center text-sm text-slate-300 hover:text-brand-400 transition-colors group/link"
+              >
+                See Examples
+                <ArrowRight className="ml-1 h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
+              </a>
             </div>
           ))}
         </div>
