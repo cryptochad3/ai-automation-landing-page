@@ -35,9 +35,22 @@ def create_placeholder_image(name: str, size: tuple, color: tuple):
     
     # Calculate text position (center)
     try:
-        # Try to use a better font if available
+        # Try to use a better font if available (cross-platform font paths)
         font_size = min(size) // 10
-        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)
+        font_paths = [
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",  # Linux
+            "/System/Library/Fonts/Helvetica.ttc",  # macOS
+            "C:\\Windows\\Fonts\\arial.ttf",  # Windows
+        ]
+        font = None
+        for font_path in font_paths:
+            try:
+                font = ImageFont.truetype(font_path, font_size)
+                break
+            except:
+                continue
+        if font is None:
+            raise Exception("No system fonts found")
     except:
         # Fallback to default font
         font = ImageFont.load_default()
