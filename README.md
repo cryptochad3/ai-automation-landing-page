@@ -13,6 +13,7 @@ Professional website for selling AI automation services with functional contact 
 - ✅ **Service Showcase** with detailed descriptions
 - ✅ **Pricing Tiers** for different project sizes
 - ✅ **Interactive AI Demo Chat** powered by Google Gemini
+- ✅ **Image API** - FastAPI backend for serving images (similar to Unsplash)
 - ✅ **Responsive Design** for all devices
 - ✅ **Professional UI** with modern styling
 
@@ -20,6 +21,7 @@ Professional website for selling AI automation services with functional contact 
 
 - Node.js (v16 or higher)
 - npm or yarn
+- Python 3.8+ (for Image API backend)
 
 ## 🛠️ Setup Instructions
 
@@ -98,6 +100,55 @@ See [SETUP.md](SETUP.md) for detailed setup guide.
 ## 📧 Contact Form Setup
 
 The contact form is production-ready but needs your Web3Forms key. See [SETUP.md](SETUP.md) for step-by-step instructions.
+
+## 🖼️ Image API (NEW!)
+
+A FastAPI-based backend that serves images from a local folder, similar to Unsplash API.
+
+### Quick Start
+
+1. Install Python dependencies:
+```bash
+cd api
+pip install -r requirements.txt
+```
+
+2. Add your images to the `images/` folder
+
+3. Start the API server:
+```bash
+python main.py
+```
+
+4. Access the API at `http://localhost:8000`
+
+### API Endpoints
+
+- `GET /api/images` - List all images with metadata
+- `GET /api/images/random` - Get a random image
+- `GET /api/images/{image_id}` - Get specific image info
+- `GET /api/images/{image_id}/download` - Download an image
+- `GET /health` - Health check
+
+### Documentation
+
+- Full API documentation: See [api/README.md](api/README.md)
+- Interactive docs: http://localhost:8000/docs (when running)
+- ReDoc: http://localhost:8000/redoc (when running)
+
+### Example Usage
+
+```javascript
+// Fetch all images
+fetch('http://localhost:8000/api/images')
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+// Get random image
+fetch('http://localhost:8000/api/images/random')
+  .then(res => res.json())
+  .then(image => console.log(image));
+```
 
 ## 🔗 Original AI Studio App
 

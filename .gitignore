@@ -22,3 +22,25 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Images (users should add their own)
+images/*.jpg
+images/*.jpeg
+images/*.png
+images/*.gif
+images/*.webp
+images/*.bmp
+!images/README.md
